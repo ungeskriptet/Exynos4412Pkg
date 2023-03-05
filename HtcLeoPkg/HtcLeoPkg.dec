@@ -36,12 +36,12 @@
 
 [PcdsFixedAtBuild.common]
   # Simple FrameBuffer
-  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0x2a00000|UINT32|0x0000a400
-  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|480|UINT32|0x0000a401
-  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|800|UINT32|0x0000a402
-  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|16|UINT32|0x0000a403
-  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480|UINT32|0x0000a404
-  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|800|UINT32|0x0000a405
+  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0x5ec00000|UINT32|0x0000a400
+  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|720|UINT32|0x0000a401
+  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1280|UINT32|0x0000a402
+  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32|UINT32|0x0000a403
+  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|720|UINT32|0x0000a404
+  gHtcLeoPkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|1280|UINT32|0x0000a405
 
   # RTC information
    gHtcLeoPkgTokenSpaceGuid.PcdBootShimInfo1|0xb0000000|UINT64|0x00000a601

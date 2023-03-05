@@ -1,14 +1,10 @@
-# EDK2 UEFI Firmware For HTC HD2
-Attempt to create a normal EDK2 for HTC HD2.
+# EDK2 UEFI for Samsung Galaxy S3 (GT-I9300)
+Based on [HtcLeoPkg](https://github.com/HTC-Leo-Revival-Project/HtcLeoPkg)
 
-## Status 
-Boots to EFI Shell
-
-## To-Do
-Get to load ReactOS /s
+## Status
+Gets stuck somewhere early in PrePi
 
 ## Credits
- - sonic011gamer for creating msm8909Pkg
- - imbushuo for creating PrimeG2Pkg and also for the framebuffer patch
- - winocm for the iPhone4Pkg
-
+ - [Dominik Kobinski](https://github.com/Dominduchami) for creating HtcLeoPkg
+ - [sonic011gamer](https://github.com/sonic011gamer) for creating MSM8909Pkg
+ - [ivoszbg](https://github.com/ivoszbg) for tips and help in chat

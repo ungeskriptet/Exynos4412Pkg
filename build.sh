@@ -1,11 +1,21 @@
 #!/bin/bash
-# based on the instructions from edk2-platform
-set -e
-export PACKAGES_PATH=$PWD/../edk2:$PWD/../edk2-platforms:$PWD
-export WORKSPACE=$PWD/workspace
-. ../edk2/edksetup.sh
-# not actually GCC5; it's GCC7 on Ubuntu 18.04.
-GCC5_ARM_PREFIX=arm-linux-gnueabihf- build -s -n 0 -a ARM -t GCC5 -p HtcLeoPkg/HtcLeoPkg.dsc
+_EDK2=$PWD/edk2
+_EDK2_PLATFORMS=$PWD/edk2-platforms
 
-mkbootimg --kernel workspace/Build/QSD8250/DEBUG_GCC5/FV/QSD8250_UEFI.fd --base 0x11800000 --kernel_offset 0x00008000 -o uefi.img
-rm -r workspace/Build
+export PACKAGES_PATH=$PWD:$_EDK2:$_EDK2_PLATFORMS
+export WORKSPACE=$PWD/workspace
+
+if ! [ -d "${_EDK2}/BaseTools/Source/C/BrotliCompress/brotli/c" ]
+then
+	git submodule update --init --depth 1
+	pushd "${_EDK2}"
+	git submodule update --init --depth 1
+	popd
+fi
+
+source "${_EDK2}/edksetup.sh"
+[ -d "${WORKSPACE}" ] || mkdir "${WORKSPACE}"
+make -j$(nproc) -C "${_EDK2}/BaseTools"|| exit "$?"
+
+GCC5_ARM_PREFIX=arm-linux-gnueabi- build -s -n 0 -a ARM -t GCC5 -p HtcLeoPkg/HtcLeoPkg.dsc
+mkbootimg --base 0x0 --kernel workspace/Build/QSD8250/DEBUG_GCC5/FV/QSD8250_UEFI.fd --kernel_offset 0x10008000 --pagesize 2048 --output uefi.img
