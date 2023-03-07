@@ -68,10 +68,6 @@ PrePiMain (
         UefiMemoryBase,
         StacksBase
     ));
-//here
-  // Initialize the Debug Agent for Source Level Debugging
-  //InitializeDebugAgent (DEBUG_AGENT_INIT_POSTMEM_SEC, NULL, NULL);
-  //SaveAndSetDebugTimerInterrupt (TRUE);
 
   // Declare the PI/UEFI memory region
   HobList = HobConstructor (
@@ -153,7 +149,7 @@ CEntryPoint (
 
   // Goto primary Main.
   //PrimaryMain (UefiMemoryBase, StacksBase, StartTimeStamp);
-  PrePiMain (UefiMemoryBase, StacksBase, StartTimeStamp);
+  PrePiMain (0x40000000, 0x40008000, StartTimeStamp);
 
   // DXE Core should always load and never return
   ASSERT (FALSE);
